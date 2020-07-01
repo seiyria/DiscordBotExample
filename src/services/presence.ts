@@ -13,6 +13,10 @@ export class PresenceService extends BaseService {
     super.init(client);
 
     if (this.envService.ignorePresence) { return; }
-    client.user.setPresence({ game: { name: 'Magia Record ;help' } });
+    this.setPresence('your custom status here, nerd');
+  }
+
+  public setPresence(presence: string) {
+    this.client.user.setPresence({ game: { name: presence } });
   }
 }

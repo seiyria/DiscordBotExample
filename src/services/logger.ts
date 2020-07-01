@@ -7,7 +7,7 @@ import { ICommandResult } from '../interfaces';
 
 @Singleton
 @AutoWired
-export class Logger extends BaseService {
+export class LoggerService extends BaseService {
 
   public async init(client) {
     super.init(client);

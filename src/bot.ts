@@ -4,17 +4,17 @@ import { Inject } from 'typescript-ioc';
 
 import { ICommandResult } from './interfaces';
 
-import { Logger } from './services/logger';
+import { LoggerService } from './services/logger';
 import { CommandParser } from './services/command-parser';
 import { PresenceService } from './services/presence';
 import { EnvService } from './services/env';
-import { DatabaseService } from './services/database';
+import { BlankService } from './services/blank';
 
 export class Bot {
-  @Inject private logger: Logger;
+  @Inject private logger: LoggerService;
   @Inject private envService: EnvService;
-  @Inject private databaseService: DatabaseService;
   @Inject private presenceService: PresenceService;
+  @Inject private blankService: BlankService;
   @Inject private commandParser: CommandParser;
 
   public async init() {
@@ -29,8 +29,8 @@ export class Bot {
       this.logger.log('Initialized bot!');
 
       this.envService.init(client);
-      this.databaseService.init(client);
       this.presenceService.init(client);
+      this.blankService.init(client);
       this.commandParser.init(client);
     });
 

@@ -4,6 +4,6 @@ import { BaseService } from '../base/BaseService';
 
 @Singleton
 @AutoWired
-export class DatabaseService extends BaseService {
+export class BlankService extends BaseService {
 
 }

@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "ts-node src/index",
+    "start:dev": "nodemon --exec \"ts-node \"-- \"src/index.ts\"",
     "test:lint": "tslint --project .",
     "test:unit": "ava-ts src/test/**.test.ts",
     "test": "npm run test:lint && npm run test:unit"

@@ -1,7 +1,7 @@
 
 # Discord Bot Example
 
-A sample bot framework for Discord using DI & typeorm.
+A sample bot framework for Discord using DI.
 
 ## Developing
 

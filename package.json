@@ -1,7 +1,7 @@
 {
   "name": "discordbotexample",
   "version": "1.0.0",
-  "description": "A sample bot framework for discord using DI & typeorm.",
+  "description": "A sample bot framework for discord using DI.",
   "main": "index.js",
   "engines": {
     "node": "10.11.0"

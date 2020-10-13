@@ -47,7 +47,7 @@ export class CommandParser extends BaseService {
     const cmd = message.content.split(' ')[0].substring(1);
     const args = message.content.substring(message.content.indexOf(cmd) + cmd.length + 1);
 
-    const cmdInst = this.executableCommands[cmd];
+    const cmdInst = this.executableCommands[cmd.toLowerCase()];
     if (!cmdInst) { return; }
 
     return cmdInst.execute({
@@ -69,6 +69,8 @@ export class CommandParser extends BaseService {
   private registerCommand(cmdInst: ICommand) {
     if (cmdInst.aliases) {
       cmdInst.aliases.forEach((alias) => {
+        alias = alias.toLowerCase();
+        
         if (this.executableCommands[alias]) {
           throw new Error(
             `Cannot re-register alias "${alias}". Trying to register ${cmdInst} but already registered ${this.executableCommands[alias]}.`

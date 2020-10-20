@@ -52,6 +52,7 @@ export class CommandParser extends BaseService {
 
     return cmdInst.execute({
       debug: false,
+      cmd,
       args,
       message,
       user: message.author

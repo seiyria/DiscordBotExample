@@ -37,6 +37,8 @@ export class Bot {
     client.on('message', async (msg) => {
       if (msg.author.bot || msg.author.id === client.user.id) { return; }
 
+      if (this.envService.testServerId && this.envService.testServerId !== msg.guild.id) { return; }
+
       const content = msg.content;
 
       if (content.startsWith(COMMAND_PREFIX)) {

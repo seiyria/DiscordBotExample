@@ -15,8 +15,9 @@ Put these values in a [`.env`](https://www.npmjs.com/package/dotenv) file or in 
 ### Required
 
 * `DISCORD_TOKEN` - the Discord token for the bot.
- 
+
 ### Optional
 
-* `COMMAND_PREFIX` - the command prefix for the bot. Defaults to `!`. 
+* `COMMAND_PREFIX` - the command prefix for the bot. Defaults to `!`.
 * `IGNORE_PRESENCE` - do not set presence values.
+* `TEST_SERVER` - set this to a Discord Guild ID

@@ -18,4 +18,8 @@ export class EnvService extends BaseService {
     return !!process.env.IGNORE_PRESENCE;
   }
 
+  public get testServerId(): string {
+    return process.env.TEST_SERVER;
+  }
+
 }

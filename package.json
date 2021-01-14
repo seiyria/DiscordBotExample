@@ -1,7 +1,7 @@
 {
   "name": "discordbotexample",
   "version": "1.0.0",
-  "description": "A sample bot framework for discord using DI & typeorm.",
+  "description": "A sample bot framework for discord using DI.",
   "main": "index.js",
   "engines": {
     "node": "10.11.0"
@@ -27,8 +27,8 @@
     "discord.js": "11.5.1",
     "dotenv": "8.0.0",
     "ts-node": "8.3.0",
-    "typescript-ioc": "1.2.5",
-    "typescript": "3.5.2"
+    "typescript": "3.5.2",
+    "typescript-ioc": "1.2.5"
   },
   "devDependencies": {
     "ava": "2.1.0",

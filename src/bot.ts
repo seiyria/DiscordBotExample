@@ -23,7 +23,7 @@ export class Bot {
     if (!DISCORD_TOKEN) { throw new Error('No Discord token specified!'); }
 
     const client = new Discord.Client();
-    await client.login(DISCORD_TOKEN);
+    client.login(DISCORD_TOKEN);
 
     client.on('ready', () => {
       this.logger.log('Initialized bot!');

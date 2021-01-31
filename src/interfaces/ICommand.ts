@@ -8,6 +8,7 @@ export interface ICommandResult {
 
 export interface ICommandArgs {
   debug?: boolean;
+  cmd: string;
   args: string;
   message?: Discord.Message;
   user?: Discord.User;

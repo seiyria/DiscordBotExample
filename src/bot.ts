@@ -17,13 +17,13 @@ export class Bot {
   @Inject private blankService: BlankService;
   @Inject private commandParser: CommandParser;
 
-  public async init() {
+  public async init(): Promise<void> {
     const DISCORD_TOKEN = this.envService.discordToken;
     const COMMAND_PREFIX = this.envService.commandPrefix;
     if (!DISCORD_TOKEN) { throw new Error('No Discord token specified!'); }
 
     const client = new Discord.Client();
-    client.login(DISCORD_TOKEN);
+    await client.login(DISCORD_TOKEN);
 
     client.on('ready', () => {
       this.logger.log('Initialized bot!');

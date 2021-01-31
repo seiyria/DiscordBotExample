@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -11,7 +13,7 @@ const init = async () => {
     await bot.init();
   } catch (e) {
 
-    // tslint:disable-next-line:no-console
+    // eslint-disable-next-line no-console
     console.error(e);
 
     process.exit(0);

@@ -17,7 +17,7 @@ export class CommandParser extends BaseService {
   private emojiAddCommands: ICommand[] = [];
   private emojiRemoveCommands: ICommand[] = [];
 
-  public async init(client) {
+  public async init(client: Discord.Client): Promise<void> {
     super.init(client);
 
     this.loadCommands(Commands);
@@ -31,13 +31,13 @@ export class CommandParser extends BaseService {
 
   // any command registering this will fire their callback when a reaction is added to a message
   // this function returns nothing because it can operate on multiple values
-  handleEmojiAdd(reaction: Discord.MessageReaction, user: Discord.User) {
+  handleEmojiAdd(reaction: Discord.MessageReaction, user: Discord.User): void {
     this.emojiAddCommands.forEach((cmd) => cmd.onEmojiAdd(reaction, user));
   }
 
   // any command registering this will fire their callback when a reaction is removed from a message
   // this function returns nothing because it can operate on multiple values
-  handleEmojiRemove(reaction: Discord.MessageReaction, user: Discord.User) {
+  handleEmojiRemove(reaction: Discord.MessageReaction, user: Discord.User): void {
     this.emojiRemoveCommands.forEach((cmd) => cmd.onEmojiRemove(reaction, user));
   }
 
@@ -59,9 +59,10 @@ export class CommandParser extends BaseService {
     });
   }
 
-  private loadCommands(commands) {
+  private loadCommands(commands): void {
     Object.keys(commands).forEach((cmdName) => {
-      const cmdInst = new Commands[cmdName]();
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+      const cmdInst: ICommand = new Commands[cmdName]() as ICommand;
 
       this.registerCommand(cmdInst);
     });
@@ -71,14 +72,15 @@ export class CommandParser extends BaseService {
     if (cmdInst.aliases) {
       cmdInst.aliases.forEach((alias) => {
         alias = alias.toLowerCase();
-        
+
         if (this.executableCommands[alias]) {
           throw new Error(
-            `Cannot re-register alias "${alias}". Trying to register ${cmdInst} but already registered ${this.executableCommands[alias]}.`
+            `Cannot re-register alias "${alias}".
+            Trying to register ${JSON.stringify(cmdInst)} but already registered ${JSON.stringify(this.executableCommands[alias])}.`
           );
         }
 
-        if (!cmdInst.execute) { throw new Error(`Command "${alias}" does not have an execute function.`); } 
+        if (!cmdInst.execute) { throw new Error(`Command "${alias}" does not have an execute function.`); }
         this.executableCommands[alias] = cmdInst;
       });
     }

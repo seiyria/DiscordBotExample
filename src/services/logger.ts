@@ -1,7 +1,8 @@
-
-// tslint:disable:no-console
+/* eslint-disable no-console */
 
 import { AutoWired, Singleton } from 'typescript-ioc';
+import * as Discord from 'discord.js';
+
 import { BaseService } from '../base/BaseService';
 import { ICommandResult } from '../interfaces';
 
@@ -9,22 +10,22 @@ import { ICommandResult } from '../interfaces';
 @AutoWired
 export class LoggerService extends BaseService {
 
-  public async init(client) {
-    super.init(client);
+  public async init(client: Discord.Client): Promise<void> {
+    await super.init(client);
 
     this.watchGlobalUncaughtExceptions();
   }
 
-  log(...args) {
+  log(...args: any[]): void {
     console.log(this.timeStamp(), ...args);
   }
 
-  logCommandResult(result: ICommandResult) {
+  logCommandResult(result: ICommandResult): void {
     if (!result || (!result.result && !result.resultString)) { return; }
     this.log(result);
   }
 
-  error(...args) {
+  error(...args: any[]): void {
     console.error(this.timeStamp(), ...args);
   }
 
